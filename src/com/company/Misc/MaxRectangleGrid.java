@@ -5,60 +5,60 @@ import java.util.List;
 import java.util.Stack;
 
 public class MaxRectangleGrid {
-    
+
     public static void main(String[] args) {
-        int m[][]={ {0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0},
-                {0, 1, 0, 0, 0, 0, 0,1, 1, 1, 1, 0},
-                {1, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1},
-                {0, 0, 1, 1, 1, 0, 1, 1, 1 ,0, 1, 1},
-                {1, 0, 1, 0, 0, 1, 0, 0, 1, 0 ,1, 1}};
-        maxArea(m,5,12);
+
+        int m[][] = {{1, 0, 1, 0},
+                {1, 1, 1, 1},
+                {1, 1, 0, 1},
+                {1, 1, 0, 1},
+                {0, 0, 0, 1},
+                {0, 1, 0, 0}};
+
+        maxArea(m, 6, 4);
         System.out.println("hello");
     }
 
     public static int maxArea(int M[][], int n, int m) {
-        // add code here.
-        int answer=0;
-        for(int i=1;i<n;i++){
-            for(int j=0;j<m;j++){
-                if(M[i][j]!=0)
-                M[i][j]+=M[i-1][j];
+        int answer = 0;
+        for (int i = 1; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (M[i][j] != 0)
+                    M[i][j] += M[i - 1][j];
             }
-            answer=Math.max(answer,compute(M,i-1,m));
+            answer = Math.max(answer, compute(M, i - 1, m));
         }
-        answer=Math.max(answer,compute(M,n-1,m));
+        answer = Math.max(answer, compute(M, n - 1, m));
         return answer;
     }
 
-    public static int compute(int M[][],int i, int m){
+    public static int compute(int M[][], int i, int m) {
 
-        Stack<Integer> stack=new Stack<>();
+        Stack<Integer> stack = new Stack<>();
         stack.push(0);
-        int area=0;
+        int area = 0;
 
-        for(int j=1;j<m;j++){
-            if(!stack.isEmpty()&&M[i][stack.peek()]>M[i][j]){
-                int index=stack.pop();
-                area=Math.max(area,M[i][index]);
-                while(!stack.isEmpty()&&M[i][stack.peek()]>M[i][j]){
-                    int current=stack.pop(); 
-                    int newArea=(index-current+1)*M[i][current];
-                    if(stack.isEmpty()){
-                        newArea=index*M[i][current];
-                    }
-                    area=Math.max(area,newArea);
-                }
+        for (int j = 1; j < m; j++) {
+            int index = stack.peek();
+            while (!stack.isEmpty() && M[i][stack.peek()] > M[i][j]) {
+                int current = stack.pop();
+                int back = stack.isEmpty()?-1:stack.peek();
+                area = Math.max(area, (index - back) * M[i][current]);
             }
             stack.push(j);
         }
-        List<Integer> list=new ArrayList<>(stack);
-        for(int x=0;x<list.size();x++){
-            area=Math.max(area,(list.get(list.size()-1)-list.get(x)+1)*M[i][list.get(x)]);
-            if(x==0){
-                area=Math.max(area,(list.get(list.size()-1)+1)*M[i][list.get(x)]);
-            }
-        }
+        area = computeForFullStack(stack, area, M, i);
         return area;
 
+    }
+
+    private static int computeForFullStack(Stack<Integer> stack, int area, int[][] M, int i) {
+        int top = stack.isEmpty() ? -1 : stack.peek();
+        while (!stack.isEmpty()) {
+            int current = stack.pop();
+            int back = stack.isEmpty()?-1:stack.peek();
+            area = Math.max(area, (top - back) * M[i][current]);
+        }
+        return area;
     }
 }
