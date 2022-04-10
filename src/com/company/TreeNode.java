@@ -1,6 +1,9 @@
 package com.company;
 
 public class TreeNode {
+    /*
+    Tree class
+    * */
     public int data;
     public TreeNode left,right;
 
