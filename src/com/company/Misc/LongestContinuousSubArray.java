@@ -14,37 +14,37 @@ public class LongestContinuousSubArray {
         Deque<Integer> minQueue=new LinkedList<>();
         Deque<Integer> maxQueue=new LinkedList<>();
 
-        int ptr1=0;
-        int ptr2=0;
-        minQueue.add(nums[ptr1]);
-        maxQueue.add(nums[ptr2]);
+        int leftPtr=0;
+        int rightPtr=0;
+        minQueue.add(nums[leftPtr]);
+        maxQueue.add(nums[rightPtr]);
         int answer=1;
 
-        while(ptr2<nums.length-1){
+        while(rightPtr<nums.length-1){
 
-            if(ptr1==ptr2 || maxQueue.peek()-minQueue.peek()<=limit){
-                ptr2++;
-                while(maxQueue.size()>0&&maxQueue.getLast()<nums[ptr2]){
+            if(leftPtr==rightPtr || maxQueue.peek()-minQueue.peek()<=limit){
+                rightPtr++;
+                while(maxQueue.size()>0&&maxQueue.getLast()<nums[rightPtr]){
                     maxQueue.removeLast();
                 }
-                maxQueue.add(nums[ptr2]);
+                maxQueue.add(nums[rightPtr]);
 
-                while(minQueue.size()>0&&minQueue.getLast()>nums[ptr2]){
+                while(minQueue.size()>0&&minQueue.getLast()>nums[rightPtr]){
                     minQueue.removeLast();
                 }
-                minQueue.add(nums[ptr2]);
+                minQueue.add(nums[rightPtr]);
                 if(maxQueue.peek()-minQueue.peek()<=limit){
-                    answer=Math.max(ptr2-ptr1+1,answer);
+                    answer=Math.max(rightPtr-leftPtr+1,answer);
                 }
 
             }else{
-                if(maxQueue.getFirst()==nums[ptr1]){
+                if(maxQueue.getFirst()==nums[leftPtr]){
                     maxQueue.removeFirst();
                 }
-                if(minQueue.getFirst()==nums[ptr1]){
+                if(minQueue.getFirst()==nums[leftPtr]){
                     minQueue.removeFirst();
                 }
-                ptr1++;
+                leftPtr++;
             }
 
 
