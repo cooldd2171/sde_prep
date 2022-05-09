@@ -1,4 +1,4 @@
-package com.company.oops;
+package com.company.lld;
 
 import java.util.HashMap;
 
@@ -40,15 +40,14 @@ public class LRUCache {
     }
 
     static HashMap<Integer, Node> map;
-    static int capacity = 0;
-    static int currentCapacity = 0;
-    static Node first, last;
+    static int maxCapacity = 0;
+    static Node first,last;
 
     static void LRUCache(int cap) {
         map = new HashMap<>(cap);
-        capacity = cap;
+        maxCapacity = cap;
         first = null;
-        last = null;
+        last=null;
     }
 
     public static int get(int key) {
@@ -60,6 +59,9 @@ public class LRUCache {
     }
 
     private static void changeOrdering(Node node) {
+        if(first==node){
+            return;
+        }
         if (node.prev != null) {
             node.prev.next = node.next;
         }
@@ -67,38 +69,39 @@ public class LRUCache {
             node.next.prev = node.prev;
         }
         first.prev=node;
-        node.next = first;
-        node.prev = null;
-        first = node;
+        node.next=first;
+        first=node;
+        first.prev=null;
     }
 
     public static void set(int key, int value) {
-        Node node = new Node(key, value, null, null);
-        if (map.containsKey(key)) {
-            node = map.get(key);
-            changeOrdering(node);
-        } else {
-            if (capacity == 0) {
-                map.remove(last.key);
-                last = last.prev;
-                last.next = null;
-                node.prev = null;
-                node.next = first;
-                first.prev = node;
-                first = node;
-            } else {
-                if (first == null) {
-                    first = node;
-                    last = node;
-                } else {
-                    node.prev = null;
-                    node.next = first;
-                    first.prev = node;
-                    first = node;
-                }
-                capacity--;
-            }
-            map.put(key, node);
+        Node node = map.getOrDefault(key,new Node(key, value, null, null));
+        node.value=value;
+       
+        if(first==null){
+            first=node;
+            last=node;
+            maxCapacity--;
+            map.put(key,node);
+            return;
         }
+        if(map.containsKey(key)){
+            changeOrdering(node);
+            return;
+        }
+        if(maxCapacity>0){
+            maxCapacity--;
+            last.next=node;
+            node.prev=last;
+            last=node;
+        }
+        else{
+            map.remove(last.key);
+            last.prev.next=node;
+            node.prev=last.prev;
+            last=node;
+        }
+        map.put(key,node);
+        changeOrdering(node);
     }
 }

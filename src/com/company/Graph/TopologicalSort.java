@@ -26,21 +26,9 @@ public class TopologicalSort {
     {
         int[] answer=new  int[V];
         visited=new boolean[V];
-        Map<Integer,List<Integer>> map=new HashMap<>();
-        for(int i=0;i<V;i++){
-            map.put(i,new ArrayList<>());
-        }
-        for(int i=0;i<adj.size();i++){
-            List<Integer> list=new ArrayList<>();
-            list.add(adj.get(i).get(1));
-            if(map.containsKey(adj.get(i).get(0))){
-                list.addAll(map.get(adj.get(i).get(1)));
-            }
-            map.put(adj.get(i).get(0),list);
-        }
         Stack<Integer> stack=new Stack<>();
         for(int i=0;i<V;i++){
-                dfs(i,map,stack);
+                dfs(i,adj,stack);
             }
         int i=0;
         while (!stack.empty()){
@@ -50,14 +38,14 @@ public class TopologicalSort {
         return answer;
     }
 
-    private static void dfs(int v, Map<Integer,List<Integer>> map, Stack<Integer> stack) {
+    private static void dfs(int v, ArrayList<ArrayList<Integer>> adj, Stack<Integer> stack) {
         if(visited[v]){
             return;
         }
         visited[v]=true;
-        List<Integer> connections = map.get(v);
+        List<Integer> connections = adj.get(v);
         for(Integer each: connections){
-            dfs(each,map,stack);
+            dfs(each,adj,stack);
         }
         stack.push(v);
     }

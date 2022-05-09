@@ -1,0 +1,4 @@
+Interface Segregation Principle
+
+The larger interfaces should be splitted into smaller units because we don't want to force the concrete classes to implement
+methods that are not required.

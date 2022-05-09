@@ -1,0 +1,4 @@
+Open Closed Principle
+
+A class should be open for extension and closed for modification.
+This means that the core components or the functionality of the class should not be altered

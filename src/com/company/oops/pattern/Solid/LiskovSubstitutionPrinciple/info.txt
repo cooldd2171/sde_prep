@@ -1,0 +1,7 @@
+Liskov Substitution Principle
+
+The derived class must be completely substitutable for their base classes.
+Example:
+
+Let's say there is a parent class A and  class B which is a child of A. Then class B should be able to replace class A
+without any interruptions.

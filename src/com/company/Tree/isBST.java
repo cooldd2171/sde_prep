@@ -30,7 +30,7 @@ public class isBST {
             return true;
         }
         
-        if(root.data>max&&root.data<min){
+        if(root.data>max||root.data<min){
             return false;
         }
         

@@ -1,0 +1,3 @@
+Single Responsibility Service
+
+A class should not be supporting multiple functionality within itself that are not the core features of it.

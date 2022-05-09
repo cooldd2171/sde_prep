@@ -1,6 +1,6 @@
 package com.company.oops.pattern.Decorator;
 
-public class Espresso implements Beverage{
+public class EspressoCoffee implements Beverage{
     @Override
     public String getName() {
         return "Espresso ";
