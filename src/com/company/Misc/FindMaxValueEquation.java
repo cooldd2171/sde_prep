@@ -14,6 +14,9 @@ public class FindMaxValueEquation {
     * https://leetcode.com/problems/max-value-of-equation/submissions/
     * The same code runs perfectly in C++ but having problem in java
     *  maybe because of the class i have created
+    * 
+    * Approach 2: This could also be solved via Deque in O(n)
+    * 
     * */
     static class Info implements Comparable<Info>{
         int sum;
