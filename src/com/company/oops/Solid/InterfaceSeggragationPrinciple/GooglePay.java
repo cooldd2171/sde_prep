@@ -1,4 +1,4 @@
-package com.company.oops.pattern.Solid.InterfaceSeggragationPrinciple;
+package com.company.oops.Solid.InterfaceSeggragationPrinciple;
 
 public class GooglePay implements UpiPayment,CashBackManager {
 

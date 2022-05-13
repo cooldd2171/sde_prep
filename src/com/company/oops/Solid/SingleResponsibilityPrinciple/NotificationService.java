@@ -1,4 +1,4 @@
-package com.company.oops.pattern.Solid.SingleResponsibilityPrinciple;
+package com.company.oops.Solid.SingleResponsibilityPrinciple;
 
 public class NotificationService {
     

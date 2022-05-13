@@ -1,4 +1,4 @@
-package com.company.oops.pattern.Solid.OpenClosedPrinciple;
+package com.company.oops.Solid.OpenClosedPrinciple;
 
 public interface NotificationService {
     

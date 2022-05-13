@@ -1,4 +1,4 @@
-package com.company.oops.pattern.Solid.LiskovSubstitutionPrinciple;
+package com.company.oops.Solid.LiskovSubstitutionPrinciple;
 
 public class Instagram implements PostMedia,SocialMedia{
     @Override

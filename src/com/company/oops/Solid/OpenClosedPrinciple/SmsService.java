@@ -1,4 +1,4 @@
-package com.company.oops.pattern.Solid.OpenClosedPrinciple;
+package com.company.oops.Solid.OpenClosedPrinciple;
 
 public class SmsService implements NotificationService{
     @Override

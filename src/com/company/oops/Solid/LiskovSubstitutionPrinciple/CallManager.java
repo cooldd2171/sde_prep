@@ -1,4 +1,4 @@
-package com.company.oops.pattern.Solid.LiskovSubstitutionPrinciple;
+package com.company.oops.Solid.LiskovSubstitutionPrinciple;
 
 public interface CallManager {
     public void groupVideoCall(String... users);
