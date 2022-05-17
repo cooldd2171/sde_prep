@@ -1,4 +1,4 @@
-package com.company.Misc;
+package com.company.DynamicProgramming;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -56,10 +56,11 @@ public class MaxLengthChain {
         if(index>=list.size()){
             return 0;
         }
+        int ans=0;
         if(list.get(index).x>value){
-            return Math.max(1+fun(list,index+1,list.get(index).y),fun(list,index+1,value));
+            ans=1+fun(list,index+1,list.get(index).y);
         }
-        return fun(list,index+1,value);
+        return Math.max(ans,fun(list,index+1,value));
     }
 
 }
