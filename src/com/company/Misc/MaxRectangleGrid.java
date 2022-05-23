@@ -6,6 +6,9 @@ import java.util.Stack;
 
 public class MaxRectangleGrid {
 
+    /*
+    * https://leetcode.com/problems/maximal-rectangle/
+    * */
     public static void main(String[] args) {
 
         int m[][] = {{1, 0, 1, 0},

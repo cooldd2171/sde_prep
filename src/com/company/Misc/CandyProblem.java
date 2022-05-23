@@ -2,6 +2,9 @@ package com.company.Misc;
 
 public class CandyProblem {
     
+    /*
+    * https://leetcode.com/problems/candy/
+    * */
     public static void main(String[] args){
         int arr[]={1,2,87,87,87,2,1};
         candy(arr);

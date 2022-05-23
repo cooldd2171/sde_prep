@@ -4,7 +4,9 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 public class LongestContinuousSubArray {
-    
+    /*
+    https://leetcode.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/
+    * */
     public static void main(String[] args){
         int nums[] = {1,3,6};
         longestSubarray(nums,3);

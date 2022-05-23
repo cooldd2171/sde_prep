@@ -1,5 +1,7 @@
 package com.company.DynamicProgramming;
 
+import java.util.Arrays;
+
 public class Knapsack01 {
     
     public static void main(String[] args){
@@ -13,10 +15,8 @@ public class Knapsack01 {
     static int knapSack(int W, int wt[], int val[], int n)
     {
         dp=new int[1000][1000];
-        for(int i=0;i<1000;i++){
-            for(int j=0;j<1000;j++){
-                dp[i][j]=-1;
-            }
+        for(int[] each: dp){
+            Arrays.fill(each,-1);
         }
         wtt=W;
         int x=compute(W,wt,val,0,n-1);
@@ -25,8 +25,6 @@ public class Knapsack01 {
     }
 
     private static int compute(int w, int[] wt, int[] val, int i, int n) {
-        
-        
         if(i>n && w==wtt){
             return -100000;
         }

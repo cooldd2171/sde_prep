@@ -38,7 +38,6 @@ public class CardsDistribution {
     }
 
     public ArrayList<Integer> finalSeq(int cars[], int n) {
-        // code here
 
         Stack<Integer> st=new Stack<>();
         st.push(cars[0]);

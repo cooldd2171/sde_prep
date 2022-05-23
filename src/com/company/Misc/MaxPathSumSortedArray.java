@@ -2,11 +2,14 @@ package com.company.Misc;
 
 public class MaxPathSumSortedArray {
     
+    /*
+    * https://leetcode.com/problems/get-the-maximum-score/
+    * */
     public static void main(String[] args){
         
     }
 
-    int maxPathSum(int ar1[], int ar2[])
+    int maxSum(int ar1[], int ar2[])
     {
         int answer=0;
         int ptr1=0,ptr2=0;

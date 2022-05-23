@@ -2,7 +2,7 @@ package com.company.Graph;
 
 import java.util.*;
 
-public class GraphMaxSumPath {
+public class MinimumCostPath {
     
     public static void main(String[] args){
         int[][] grid={{9, 4, 9, 9},

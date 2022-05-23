@@ -1,9 +1,14 @@
 package com.company.DynamicProgramming;
 
+import java.util.Arrays;
 import java.util.Map;
 
 public class CountWays {
 
+    /*There are n stairs, a person standing at the bottom wants to reach the top.
+    The person can climb either 1 stair or 2 stairs at a time.
+    Count the number of ways, the person can reach the top (order does matter).
+    */
     static int dp[];
     
     public static void main(String[] args){
@@ -14,14 +19,12 @@ public class CountWays {
 
     static int countWays(int n)
     {
-        int[] dp=new int[10000];
-        for(int i=0;i<10000;i++){
-            dp[i]=-1;
-        }
-        return countWays1(n);
+        dp=new int[10000];
+        Arrays.fill(dp,-1);
+        return countWaysUtil(n);
 
     }
-    static int countWays1(int n)
+    static int countWaysUtil(int n)
     {
         if(n<0){
             return 0;
