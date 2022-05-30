@@ -1,0 +1,12 @@
+signup~shourya
+login~shourya
+post~hello
+signup~aditya
+login~aditya
+follow~shourya
+feed
+1.timebased
+2.scorebased(like-dislike)
+3.number of comments
+4. follow 
+5 default (generic)
