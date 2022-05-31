@@ -39,7 +39,7 @@ public class NewsFeed {
                     throw new CustomException("invalid input");
                 }
                 System.out.println(inputCommandExecutor.process(text));
-            }catch (CustomException exception){
+            }catch (Exception exception){
                 System.out.println("input is incorrect");
             }
         }

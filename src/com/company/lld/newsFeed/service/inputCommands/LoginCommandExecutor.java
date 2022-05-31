@@ -17,7 +17,7 @@ public class LoginCommandExecutor extends InputCommandExecutor {
     public String process(String input) throws CustomException {
         String[] split = input.split("~");
         String name = split[1];
-        User user = users.stream().filter(e -> e.getName().equals(name)).findFirst().orElseThrow(()->{throw new CustomException("user not found");});
+        User user = users.stream().filter(e -> e.getName().equals(name)).findFirst().get();
         //super.currentLoggedInUser.setName(user.get().getName());
         super.currentLoggedInUser=user;
         return "User logged in";

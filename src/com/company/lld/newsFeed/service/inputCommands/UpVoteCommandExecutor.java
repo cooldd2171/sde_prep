@@ -1,8 +1,9 @@
 package com.company.lld.newsFeed.service.inputCommands;
 
-import com.shourya.demo.core.newsFeed.model.Post;
-import com.shourya.demo.core.newsFeed.model.User;
-import com.shourya.demo.core.newsFeed.service.enums.CommandExecutorEnum;
+
+import com.company.lld.newsFeed.model.Post;
+import com.company.lld.newsFeed.model.User;
+import com.company.lld.newsFeed.service.enums.CommandExecutorEnum;
 
 import java.util.List;
 
