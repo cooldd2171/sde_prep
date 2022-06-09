@@ -8,6 +8,7 @@ import java.util.List;
 public class MaximumEarning {
     
     /*
+    this could be improved by using binary search following the longest increasing subsequence
     link: https://leetcode.com/problems/maximum-earnings-from-taxi/
     * */
     public static void main(String[] args){
