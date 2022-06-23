@@ -93,14 +93,13 @@ public class LRUCache {
             maxCapacity--;
             last.next=node;
             node.prev=last;
-            last=node;
         }
         else{
             map.remove(last.key);
             last.prev.next=node;
             node.prev=last.prev;
-            last=node;
         }
+        last=node;
         map.put(key,node);
         changeOrdering(node);
     }
