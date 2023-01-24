@@ -22,6 +22,7 @@ public class FeedCommandExecutor extends InputCommandExecutor{
     @Override
     public String process(String input) {
         Set<String> followers = currentLoggedInUser.getFollowers();
+        //
         List<Post> userFeed = posts.stream().filter(e -> followers.contains(e.getCreatedBy().getName())).collect(Collectors.toList());
         return sortingFilter.sort(userFeed).toString();
     }

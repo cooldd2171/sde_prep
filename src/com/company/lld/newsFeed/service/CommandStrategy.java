@@ -3,10 +3,7 @@ package com.company.lld.newsFeed.service;
 import com.company.lld.newsFeed.service.enums.CommandExecutorEnum;
 import com.company.lld.newsFeed.service.inputCommands.InputCommandExecutor;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 

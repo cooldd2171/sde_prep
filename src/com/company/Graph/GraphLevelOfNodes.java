@@ -12,22 +12,27 @@ public class GraphLevelOfNodes {
     {
         Queue<Integer> queue=new LinkedList<>();
         boolean[] visited=new boolean[V];
-        Map<Integer,Integer> nodeToLevelMap=new HashMap<>();
-        nodeToLevelMap.put(0,0);
-        visited[0]=true;
         queue.add(0);
+        queue.add(-1);
+        int level=0;
         while (queue.size()>0){
             Integer value = queue.poll();
-            Integer level = nodeToLevelMap.get(value);
+            if(value==-1){
+                level++;
+                queue.add(-1);
+                continue;
+            }
+            if(value==X){
+               break;
+            }
             ArrayList<Integer> connections = adj.get(value);
             for (Integer each: connections){
                 if(!visited[each]){
-                    nodeToLevelMap.put(each,level+1);
                     visited[each]=true;
                     queue.add(each);
                 }
             }
         }
-        return nodeToLevelMap.get(X);
+        return level;
     }
 }

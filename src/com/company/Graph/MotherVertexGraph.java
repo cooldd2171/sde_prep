@@ -1,9 +1,6 @@
 package com.company.Graph;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MotherVertexGraph {
     
@@ -46,5 +43,18 @@ public class MotherVertexGraph {
             if(!visited[each])
             dfs(adj,each);
         }
+    }
+    
+    //stack top will give the answer
+    void dfs(ArrayList<ArrayList<Integer>> adj, int index, Stack<Integer> stack){
+        if(visited[index]){
+            return;
+        }
+        visited[index]=true;
+        ArrayList<Integer> connections = adj.get(index);
+        for(Integer each: connections){
+            dfs(adj,each,stack);
+        }
+        stack.push(index);
     }
 }
