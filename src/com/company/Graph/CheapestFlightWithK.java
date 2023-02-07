@@ -11,7 +11,7 @@ public class CheapestFlightWithK {
     
     public static int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
         int[] finalArr=new int[n];
-        Queue<Integer> queue=new LinkedList<>();
+        Queue<int[]> queue=new LinkedList<>();
         Map<Integer,List<List<Integer>>> map=new HashMap<>();
         for(int[] each: flights){
             List<List<Integer>> connections= map.getOrDefault(each[0],new ArrayList<>());
@@ -20,7 +20,7 @@ public class CheapestFlightWithK {
         }
         for(int i=0;i<n;i++){
             if(i==src){
-                queue.add(i);
+                queue.add(new int[]{i,0});
                 finalArr[i]=0;
             }else{
                 finalArr[i]=100000;
@@ -29,13 +29,14 @@ public class CheapestFlightWithK {
         while (!queue.isEmpty()&&k>=0){
             int size=queue.size();
            while(size-->0){
-               int front=queue.poll();
-               int currentDistance=finalArr[front];
-               List<List<Integer>> connections=map.getOrDefault(front,new ArrayList<>());
+               int[] front=queue.poll();
+               int element=front[0];
+               int currentDistance=front[1];
+               List<List<Integer>> connections=map.getOrDefault(element,new ArrayList<>());
                for(List<Integer> each: connections){
                    if(finalArr[each.get(0)]>currentDistance+each.get(1)){
                        finalArr[each.get(0)]=currentDistance+each.get(1);
-                       queue.add(each.get(0));
+                       queue.add(new int[]{each.get(0),finalArr[each.get(0)]});
                    }
                }
            }

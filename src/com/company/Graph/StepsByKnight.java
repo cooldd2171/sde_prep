@@ -85,5 +85,52 @@ public class StepsByKnight {
         
         return answer;
     }
-    
+
+
+    int[][] moves={{1,2},{1,-2},{-1,2},{-1,-2},{2,1},{2,-1},{-2,1},{-2,-1}};
+    public int minStepToReachTargetV2(int KnightPos[], int TargetPos[], int N)
+    {
+        Queue<int[]> queue=new LinkedList<>();
+        KnightPos[0]= KnightPos[0]-1;
+        KnightPos[1]= KnightPos[1]-1;
+        TargetPos[0]=TargetPos[0]-1;
+        TargetPos[1]=TargetPos[1]-1;
+        queue.add(KnightPos);
+        int[] temp={-1,-1};
+        queue.add(temp);
+        int distance=0;
+        boolean[][] visited=new boolean[N][N];
+        while (!queue.isEmpty()){
+            int[] front=queue.poll();
+            if(front==temp){
+                distance++;
+                queue.add(temp);
+                continue;
+            }
+            if(front==TargetPos){
+                break;
+            }
+            if(visited[front[0]][front[1]]){
+                continue;
+            }
+            visited[front[0]][front[1]]=true;
+            for(int index=0;index< moves.length;index++){
+                int i=front[0]+moves[index][0];
+                int j=front[1]+moves[index][1];
+                if(validate(i,j,N)){
+                    queue.add(new int[]{i,j});
+                }
+            }
+            
+        }
+        return distance;
+    }
+
+    private boolean validate(int i, int j,int N) {
+        if(i<0||j<0||i>=N||j>=N){
+            return false;
+        }
+        return true;
+    }
+
 }
